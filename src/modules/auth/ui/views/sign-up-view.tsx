@@ -18,9 +18,10 @@ import{
     FormMessage
 } from "@/components/ui/form";
 import { useForm } from "react-hook-form";
-import { useRouter } from "next/navigation";
+
 import { useState } from "react";
-import { set } from "date-fns";
+import { useRouter } from "next/navigation";
+
 
 const formSchema = z.object({
     name: z.string().min(1, {message: "Name is required"}),
@@ -53,11 +54,29 @@ export const SignUpView =()=>{
         authClient.signUp.email({
             name: data.name,
             email: data.email,
-            password: data.password
+            password: data.password ,
+            callbackURL: "/"
         },{
             onSuccess: () => {
                 setPending(false);
-                router.push("/");
+               router.push("/");
+            },
+            onError: ({error}) => {
+                setError(error.message);
+            }
+        }
+    );
+    }
+    const onSocial =  (provider: "google" | "github") => {
+        setError(null);
+        setPending(true);
+        authClient.signIn.social({
+            provider: provider,
+            callbackURL: "/"
+        },{
+            onSuccess: () => {
+                setPending(false);
+               
             },
             onError: ({error}) => {
                 setError(error.message);
@@ -154,7 +173,7 @@ export const SignUpView =()=>{
                              type="submit"
                              className="w-full"
                              >
-                                Sign In
+                                Sign Up
                              </Button>
                              <div className="after:border-border relative text-center text-sm after:absolute after:inset-0 
                              after:top-1/2 after:z-0 after:flex after:items-center after:border-t">
@@ -163,11 +182,11 @@ export const SignUpView =()=>{
                                 </span>
                              </div>
                              <div className="grid grid-cols-2 gap-4">
-                                <Button disabled={pending} variant="outline" type="button" className="w-full">
+                                <Button  disabled={pending} onClick={()=>onSocial("google")} variant="outline" className="w-full">
                                     <img src="/google.svg" alt="Google" className="h-4 w-4 mr-2" />
                                     Google
                                 </Button>
-                                <Button disabled={pending} variant="outline" className="w-full">
+                                <Button disabled={pending} onClick={()=>onSocial("github")} variant="outline" className="w-full">
                                     <img src="/github.svg" alt="GitHub" className="h-4 w-4 mr-2" />
                                     GitHub
                                 </Button>
