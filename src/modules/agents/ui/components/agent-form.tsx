@@ -33,7 +33,7 @@ export const AgentForm=({
     initialValues,
 }:AgentFormProps)=>{
     const trpc = useTRPC();
-    const router = useRouter();
+   
     const queryClient = useQueryClient();
     const createAgent = useMutation(
         trpc.agents.create.mutationOptions({
