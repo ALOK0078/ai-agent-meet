@@ -33,7 +33,7 @@ export const AgentForm=({
     initialValues,
 }:AgentFormProps)=>{
     const trpc = useTRPC();
-   
+   const router =useRouter();
     const queryClient = useQueryClient();
     const createAgent = useMutation(
         trpc.agents.create.mutationOptions({
@@ -41,13 +41,17 @@ export const AgentForm=({
                await queryClient.invalidateQueries(
                     trpc.agents.getMany.queryOptions({}),
                 )
+                await queryClient.invalidateQueries(
+                    trpc.premium.getFreeUsage.queryOptions(),
+                )
                 
                 onSuccess?.();
             },
             onError:(error)=>{
                 toast.error(error.message);
-
-                //todo check if error code is "forbidden"
+                if(error.data?.code==="FORBIDDEN"){
+                    router.push("/upgrade");
+                }
             },
         })
     )
