@@ -4,7 +4,7 @@ import Highlighter from "react-highlight-words";
 import { useQuery } from "@tanstack/react-query";
 import { useTRPC } from "@/trpc/client";
 import { Input } from "@/components/ui/input";
-import { Search, SearchIcon } from "lucide-react";
+import {  SearchIcon } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { generateAvatarUri } from "@/lib/avatar";

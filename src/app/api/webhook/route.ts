@@ -5,7 +5,7 @@ import {
     MessageNewEvent,
     CallTranscriptionReadyEvent,
     CallSessionParticipantLeftEvent,
-    CallRecordingFailedEvent,
+   
     CallSessionStartedEvent,
     CallRecordingReadyEvent
 }from "@stream-io/node-sdk"
@@ -14,7 +14,7 @@ import { NextRequest ,NextResponse } from "next/server";
 import { db } from "@/db";
 import {agents ,meetings} from  "@/db/schema"
 import { streamVideo } from "@/lib/stream-video";
-import { error } from "console";
+
 import { inngest } from "@/inngest/client";
 import { streamChat } from "@/lib/stream-chat";
 import { generateAvatarUri } from "@/lib/avatar";

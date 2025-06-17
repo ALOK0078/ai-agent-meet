@@ -6,14 +6,14 @@ import { GeneratedAvatar } from "@/components/generated-avatar"
 import { CornerDownRightIcon,
     CircleCheckIcon,
     CircleXIcon,
-    CircleArrowUpIcon,
+   
     ClockFadingIcon,
     LoaderIcon,
-    VideoIcon, 
+  
     ClockArrowUpIcon} from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import{format} from "date-fns"
-import humanizeDuration from "humanize-duration"
+
 import {cn, formatDuration} from "@/lib/utils";
 
 

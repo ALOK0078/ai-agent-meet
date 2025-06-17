@@ -2,8 +2,7 @@ import { polarClient } from "@/lib/polar"
 import { db } from "@/db"
 import {agents , meetings} from "@/db/schema"
 import{
-   
-    baseProcedure,
+
     createTRPCRouter,
     protectedProcedure
 } from "@/trpc/init"

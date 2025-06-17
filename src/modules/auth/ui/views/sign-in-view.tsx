@@ -3,6 +3,7 @@ import { z } from "zod";
 import { OctagonAlertIcon } from "lucide-react";
 import {zodResolver} from "@hookform/resolvers/zod";
 import Link from "next/link";
+import Image from "next/image";
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -146,11 +147,11 @@ export const SignInView =()=>{
                              </div>
                              <div className="grid grid-cols-2 gap-4">
                                 <Button disabled={pending} onClick={()=>onSocial("google")} variant="outline" className="w-full">
-                                    <img src="/google.svg" alt="Google" className="h-4 w-4 mr-2" />
+                                    <Image src="/google.svg" alt="Google" width={16} height={16} className="mr-2" />
                                     Google
                                 </Button>
                                 <Button disabled={pending} onClick={()=>onSocial("github")} variant="outline" className="w-full">
-                                    <img src="/github.svg" alt="GitHub" className="h-4 w-4 mr-2" />
+                                    <Image src="/github.svg" alt="GitHub" width={16} height={16} className="mr-2" />
                                     GitHub
                                 </Button>
                              </div>
@@ -164,7 +165,7 @@ export const SignInView =()=>{
                         </form>
                     </Form>
                     <div className="bg-radial from-sidebar-accent to-sidebar relative hidden md:flex flex-col gap-y-4 items-center justify-center ">
-                        <img src="/logo.svg" alt ="Image" className="h-[92px] w-[92px]"/>
+                        <Image src="/logo.svg" alt="Meet.AI Logo" width={92} height={92} priority />
                         <p className="text-2xl font-semibold text-white">
                             Meet.AI
                         </p>
